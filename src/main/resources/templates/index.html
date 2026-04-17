@@ -1,0 +1,28 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politician-Party</title>
+</head>
+<body>
+
+<div th:if="${error}" class="error-message">
+    <p th:text="${error}"></p>
+</div>
+
+<div class="landing-container">
+    <div class="text-area">
+        <textarea class="random-polititian"
+                  th:text="${politician.name} + ' ' + ${politician.surname}">
+        </textarea>
+    </div>
+    <div class="buttons">
+        <button class="newPolititian" onclick="window.location.href='/'">
+            <span>Neue(n) Politiker(in) Laden</span>
+        </button>
+    </div>
+</div>
+
+
+</body>
+</html>
