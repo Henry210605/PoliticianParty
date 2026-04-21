@@ -4,7 +4,7 @@ import org.quizz.politicianparty.model.Politician;
 import org.quizz.politicianparty.repository.PoliticianRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class PoliticianService {
@@ -20,6 +20,21 @@ public class PoliticianService {
             throw new RuntimeException("Kein Politiker vorhanden in der Datenbank!");
         }
         return randomPolitician.get();
+    }
+
+    public List<String> getQuizParties(Politician currentPolitician){
+        List<String> quizPartys = new ArrayList<>();
+        List<String> allDistinctParties = politicianRepository.getAllDistinctParties();
+
+        quizPartys.add(currentPolitician.getParty());
+        allDistinctParties.remove(currentPolitician.getParty());
+        Collections.shuffle(allDistinctParties);
+        for (int i =0;i<3;i++){
+            quizPartys.add(allDistinctParties.get(i));
+        }
+        Collections.shuffle(quizPartys);
+
+        return quizPartys;
     }
 
 }
