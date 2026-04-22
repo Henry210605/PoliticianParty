@@ -39,7 +39,7 @@ public class QuizService {
     }
 
     public List<Long> recentIdsUpdater(List<Long> recentIds, Politician randomPolitician) {
-        System.out.println("Quizz-Debug: recentIds aus Session: " + recentIds);
+        //System.out.println("Quizz-Debug: recentIds aus Session: " + recentIds);
 
         //Liste aufräumen wenn zu viele Elemente
         recentIds.add(randomPolitician.getId());
@@ -74,5 +74,9 @@ public class QuizService {
 
     public long getAllPoliticiansSize() {
         return politicianRepository.count();
+    }
+
+    public boolean isCorrectAnswer(String selectedParty, String correctParty) {
+        return selectedParty.equals(correctParty);
     }
 }
