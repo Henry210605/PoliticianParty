@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface PoliticianRepository extends JpaRepository<Politician, Long> {
 
     @Query(value = "SELECT * FROM politicians ORDER BY RANDOM() LIMIT 1", nativeQuery = true)
-    Optional<Politician> findRandomPolitician();
+    Optional<Politician> getRandomPolitician();
 
     @Query(value = "SELECT DISTINCT party from politicians", nativeQuery = true)
     List<String> getAllDistinctParties();

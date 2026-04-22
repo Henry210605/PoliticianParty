@@ -12,7 +12,7 @@
 
 <div class="landing-container">
     <div id="score">Punktzahl: 0</div>
-    <div><img id="politician-image" src="#" alt="Politikerbild" /></div>
+    <div><img id="politician-image" th:src="@{'/images/' + ${politician.imagePath}}" alt="Politikerbild" /></div>
     <div class="politician-name">
         <h2 class="random-polititian"
                   th:text="${politician.name} + ' ' + ${politician.surname}">

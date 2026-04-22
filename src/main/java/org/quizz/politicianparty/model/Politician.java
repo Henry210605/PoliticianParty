@@ -1,11 +1,9 @@
 package org.quizz.politicianparty.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "politicians")
 public class Politician {
     @Id
     @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)

@@ -15,7 +15,7 @@ public class PoliticianService {
     }
 
     public Politician getRandomPolitician(){
-        Optional<Politician> randomPolitician = politicianRepository.findRandomPolitician();
+        Optional<Politician> randomPolitician = politicianRepository.getRandomPolitician();
         if (randomPolitician.isEmpty()){
             throw new RuntimeException("Kein Politiker vorhanden in der Datenbank!");
         }
@@ -37,4 +37,7 @@ public class PoliticianService {
         return quizPartys;
     }
 
+    public long getAllPoliticiansSize() {
+        return politicianRepository.count();
+    }
 }
