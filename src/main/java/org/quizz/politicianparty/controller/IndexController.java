@@ -14,7 +14,10 @@ public class IndexController {
 
     @GetMapping("/")
     public String index(Model model, HttpSession httpSession, HttpServletResponse response) {
+        Integer score = (Integer) httpSession.getAttribute("score");
+        if (score == null) score = 0;
 
+        model.addAttribute("score", score);
 
         return "index";
     }

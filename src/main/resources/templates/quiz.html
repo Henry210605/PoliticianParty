@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Politician-Party</title>
+    <link rel="stylesheet" href="/css/quiz.css">
 </head>
 <body>
 
@@ -11,7 +12,7 @@
 </div>
 
 <div class="landing-container">
-    <div id="score">Punktzahl: 0</div>
+    <div id="score" th:text="'Punktzahl: ' + ${score}"></div>
     <div><img id="politician-image" th:src="@{'/images/' + ${politician.imagePath}}" alt="Politikerbild" /></div>
     <div class="politician-name">
         <h2 class="random-polititian"

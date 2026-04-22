@@ -21,6 +21,9 @@ public class QuizController {
 
     @GetMapping("/quiz")
     public String index(Model model, HttpSession httpSession, HttpServletResponse response) {
+        Integer score = (Integer) httpSession.getAttribute("score");
+        if (score == null) score = 0;
+
         List<Long> recentIds = (List<Long>) httpSession.getAttribute("recentIds");
         if (recentIds == null) recentIds = new ArrayList<>();
 
@@ -54,6 +57,7 @@ public class QuizController {
         httpSession.setAttribute("recentIds", recentIds);
         model.addAttribute("politician",randomPolititian);
         model.addAttribute("quizParties", quizParties);
+        model.addAttribute("score", score);
 
         System.out.println("Quizz-Debug: Session-ID: " + httpSession.getId());
         return "quiz";

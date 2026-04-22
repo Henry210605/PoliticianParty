@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Politician-Party</title>
+    <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
 
@@ -11,7 +12,8 @@
 </div>
 
 <div class="landing-container">
-    <div id="score">Punktzahl: 0</div>
+    <h1>Politician-Party</h1>
+    <div id="score" th:text="'Punktzahl: ' + ${score}"></div>
     <div class="buttons">
         <button class="startQuiz" onclick="window.location.href='/quiz'">
             <span>Quiz starten</span>
