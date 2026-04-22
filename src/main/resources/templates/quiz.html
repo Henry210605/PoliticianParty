@@ -1,0 +1,37 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politician-Party</title>
+</head>
+<body>
+
+<div th:if="${error}" class="error-message">
+    <p th:text="${error}"></p>
+</div>
+
+<div class="landing-container">
+    <div id="score">Punktzahl: 0</div>
+    <div><img id="politician-image" th:src="@{'/images/' + ${politician.imagePath}}" alt="Politikerbild" /></div>
+    <div class="politician-name">
+        <h2 class="random-polititian"
+                  th:text="${politician.name} + ' ' + ${politician.surname}">
+        </h2>
+    </div>
+    <div id="party-buttons">
+        <button th:each="partyName : ${quizParties}" th:text="${partyName}"></button>
+    </div>
+    <br>
+    <div class="buttons">
+        <button class="newPolititian" onclick="window.location.href='/quiz'">
+            <span>Neue(n) Politiker(in) Laden</span>
+        </button>
+        <button class="returnToIndex" onclick="window.location.href='/'">
+            <span>Zur Startseite</span>
+        </button>
+    </div>
+</div>
+
+
+</body>
+</html>
