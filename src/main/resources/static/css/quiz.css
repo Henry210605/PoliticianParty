@@ -1,3 +1,47 @@
 body {
-    text-align: center;
+    background-color: #faf9f4;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.landing-container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 480px;
+}
+
+.button {
+    background-color: #6ea4fa;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.quiz-button {
+    background-color: #7bc47b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+#party-button {
+    display: grid;
+    grid-template-columns: 1fr 1fr;  /* 2 Spalten gleich breit */
+    gap: 8px;                         /* Abstand zwischen Buttons */
 }

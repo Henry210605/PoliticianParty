@@ -17,9 +17,10 @@
     <div th:if="${gameOverParty}" class="gameOverDisplay">
         <p th:text="'Leider Falsch! ' + ${gameOverPoliticianName} + ' ' + ${gameOverPoliticianSurname} + ' ist in der Partei ' + ${gameOverParty} + '.'"></p>
     </div>
-    <div class="buttons">
+    <br>
+    <div class="button-container">
         <form th:action="@{/quiz/start}" method="post">
-            <button class="startQuiz" type:"submit">
+            <button class="button" type="submit">
             <span>Quiz starten</span>
             </button>
         </form>

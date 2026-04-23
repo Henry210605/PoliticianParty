@@ -19,8 +19,11 @@ public class IndexController {
         Integer score = (Integer) httpSession.getAttribute("score");
         if (score == null) score = 0;
 
+        Boolean gameOver = (Boolean) httpSession.getAttribute("gameOver");
+        if (gameOver == null) gameOver = false;
+
         Politician lastPolitician = (Politician) httpSession.getAttribute("politician");
-        if (!(lastPolitician == null)) {
+        if (!(lastPolitician == null) && gameOver) {
             model.addAttribute("gameOverPoliticianName", lastPolitician.getName());
             model.addAttribute("gameOverPoliticianSurname", lastPolitician.getSurname());
             model.addAttribute("gameOverParty", lastPolitician.getParty());
@@ -28,6 +31,7 @@ public class IndexController {
 
         httpSession.setAttribute("score", score);
         model.addAttribute("score", score);
+        httpSession.setAttribute("gameOver", gameOver);
 
         httpSession.removeAttribute("politician");
 

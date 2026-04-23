@@ -19,25 +19,24 @@
                   th:text="${politician.name} + ' ' + ${politician.surname}">
         </h2>
     </div>
-    <form class="party-buttons" th:action="@{/quiz/answer}" method="post">
-    <div id="party-buttons">
-        <button
-            type="submit"
-            name="selectedParty"
-            th:each="partyName : ${quizParties}"
-            th:value="${partyName}"
-            th:text="${partyName}">
-        </button>
-    </div>
-</form>
-    <br>
-    <div class="buttons">
-        <button class="newPolititian" onclick="window.location.href='/quiz'">
-            <span>Neue(n) Politiker(in) Laden</span>
-        </button>
-        <button class="returnToIndex" onclick="window.location.href='/'">
-            <span>Zur Startseite</span>
-        </button>
+    <div class="button-container">
+        <form th:action="@{/quiz/answer}" method="post">
+            <div id="party-button" class="quiz-buttons">
+                <button class="quiz-button"
+                    type="submit"
+                    name="selectedParty"
+                    th:each="partyName : ${quizParties}"
+                    th:value="${partyName}"
+                    th:text="${partyName}">
+                </button>
+            </div>
+        </form>
+        <br>
+        <div class="returnToIndex">
+            <button class="button" type="button" onclick="window.location.href='/'">
+                <span>Zur Startseite zurück</span>
+            </button>
+        </div>
     </div>
 </div>
 
