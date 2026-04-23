@@ -2,6 +2,7 @@ package org.quizz.politicianparty.controller;
 
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import org.quizz.politicianparty.model.Politician;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,8 +19,17 @@ public class IndexController {
         Integer score = (Integer) httpSession.getAttribute("score");
         if (score == null) score = 0;
 
+        Politician lastPolitician = (Politician) httpSession.getAttribute("politician");
+        if (!(lastPolitician == null)) {
+            model.addAttribute("gameOverPoliticianName", lastPolitician.getName());
+            model.addAttribute("gameOverPoliticianSurname", lastPolitician.getSurname());
+            model.addAttribute("gameOverParty", lastPolitician.getParty());
+        }
+
         httpSession.setAttribute("score", score);
         model.addAttribute("score", score);
+
+        httpSession.removeAttribute("politician");
 
         return "index";
     }

@@ -66,7 +66,6 @@ public class QuizController {
         }
 
         //game Over
-        httpSession.removeAttribute("politician");
         httpSession.removeAttribute("recentIds");
         httpSession.setAttribute("gameOver", true);
 
