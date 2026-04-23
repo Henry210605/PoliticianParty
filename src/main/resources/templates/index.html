@@ -1,4 +1,4 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:type="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,9 +15,11 @@
     <h1>Politician-Party</h1>
     <div id="score" th:text="'Punktzahl: ' + ${score}"></div>
     <div class="buttons">
-        <button class="startQuiz" onclick="window.location.href='/quiz'">
+        <form th:action="@{/quiz/start}" method="post">
+            <button class="startQuiz" type:"submit">
             <span>Quiz starten</span>
-        </button>
+            </button>
+        </form>
     </div>
 </div>
 

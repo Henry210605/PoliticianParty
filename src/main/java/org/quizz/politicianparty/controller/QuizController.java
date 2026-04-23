@@ -7,6 +7,8 @@ import org.quizz.politicianparty.service.QuizService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +23,11 @@ public class QuizController {
 
     @GetMapping("/quiz")
     public String index(Model model, HttpSession httpSession, HttpServletResponse response) {
+        //bei illegalem Aufruf der nicht über den "Spiel starten" zurück auf die Startseite gehen
+        Boolean gameOver = (Boolean) httpSession.getAttribute("gameOver");
+        if (gameOver == true) return "redirect:/";
         Integer score = (Integer) httpSession.getAttribute("score");
+
         if (score == null) score = 0;
 
         List<Long> recentIds = (List<Long>) httpSession.getAttribute("recentIds");
@@ -35,14 +41,36 @@ public class QuizController {
 
         List<String> quizParties = quizService.getQuizParties(randomPolitician);
 
-        httpSession.setAttribute("recentIds", recentIds);
-        model.addAttribute("politician", randomPolitician);
         model.addAttribute("quizParties", quizParties);
+        model.addAttribute("politician", randomPolitician);
         model.addAttribute("score", score);
+        httpSession.setAttribute("politician", randomPolitician);
+        httpSession.setAttribute("score", score);
+        httpSession.setAttribute("recentIds", recentIds);
 
         System.out.println("Quizz-Debug: Session-ID: " + httpSession.getId());
         return "quiz";
     }
 
+    @PostMapping("/quiz/answer")
+    public String checkAnswer(@RequestParam String selectedParty, HttpSession httpSession){
+        Integer score = (Integer) httpSession.getAttribute("score");
+        Politician currentPolitician = (Politician) httpSession.getAttribute("politician");
+        String correctParty = currentPolitician.getParty();
+
+        //richtige Antwort
+        if (quizService.isCorrectAnswer(selectedParty, correctParty)){
+            score++;
+            httpSession.setAttribute("score", score);
+            return "redirect:/quiz";
+        }
+
+        //game Over
+        httpSession.removeAttribute("politician");
+        httpSession.removeAttribute("recentIds");
+        httpSession.setAttribute("gameOver", true);
+
+        return "redirect:/";
+    }
 
 }
