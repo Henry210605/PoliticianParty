@@ -25,7 +25,8 @@ public class QuizController {
     public String index(Model model, HttpSession httpSession, HttpServletResponse response) {
         //bei illegalem Aufruf der nicht über den "Spiel starten" zurück auf die Startseite gehen
         Boolean gameOver = (Boolean) httpSession.getAttribute("gameOver");
-        if (gameOver == true) return "redirect:/";
+        if (gameOver == null || gameOver) return "redirect:/";
+
         Integer score = (Integer) httpSession.getAttribute("score");
 
         if (score == null) score = 0;
@@ -67,6 +68,8 @@ public class QuizController {
 
         //game Over
         httpSession.removeAttribute("recentIds");
+        httpSession.setAttribute("lastPolitician", currentPolitician);
+        httpSession.removeAttribute("politician");
         httpSession.setAttribute("gameOver", true);
 
         return "redirect:/";

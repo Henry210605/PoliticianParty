@@ -22,7 +22,7 @@ public class IndexController {
         Boolean gameOver = (Boolean) httpSession.getAttribute("gameOver");
         if (gameOver == null) gameOver = false;
 
-        Politician lastPolitician = (Politician) httpSession.getAttribute("politician");
+        Politician lastPolitician = (Politician) httpSession.getAttribute("lastPolitician");
         if (!(lastPolitician == null) && gameOver) {
             model.addAttribute("gameOverPoliticianName", lastPolitician.getName());
             model.addAttribute("gameOverPoliticianSurname", lastPolitician.getSurname());
@@ -33,7 +33,7 @@ public class IndexController {
         model.addAttribute("score", score);
         httpSession.setAttribute("gameOver", gameOver);
 
-        httpSession.removeAttribute("politician");
+        httpSession.removeAttribute("lastPolitician");
 
         return "index";
     }
