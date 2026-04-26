@@ -8,6 +8,7 @@ Das Frontend basiert auf Thymeleaf, die Persistenz auf Spring Data JPA mit SQLit
 
 - JDK 25 installiert
 - Maven (oder Maven Wrapper `mvnw` / `mvnw.cmd`)
+- politicians.db Datei mit Daten vorhanden
 
 ## Projekt starten
 
