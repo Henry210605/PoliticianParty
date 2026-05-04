@@ -24,7 +24,8 @@ Danach im Browser öffnen:
 ## Datenbank (SQLite)
 
 - Verwendete Datei: `politicians.db`
-- Beispiel-Datei mit 4 Einträgen: `politicians.db.example`
+- Beispiel-Datei mit 4 Einträgen: `politicians.db.example4`
+- Beispiel-Datei mit 39 Einträgen: `politicians.db.example39`
 - JDBC-URL (siehe `src/main/resources/application.properties`):
   - `spring.datasource.url=jdbc:sqlite:politicians.db`
 
