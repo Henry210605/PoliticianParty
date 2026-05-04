@@ -1,5 +1,6 @@
 package org.quizz.politicianparty.service;
 
+import jakarta.servlet.http.Cookie;
 import org.quizz.politicianparty.model.Politician;
 import org.quizz.politicianparty.repository.PoliticianRepository;
 import org.springframework.stereotype.Service;
@@ -78,5 +79,20 @@ public class QuizService {
 
     public boolean isCorrectAnswer(String selectedParty, String correctParty) {
         return selectedParty.equals(correctParty);
+    }
+
+    public int getHighscore(Cookie[] cookies){
+        int highscore = 0;
+        for (Cookie cookie : cookies) {
+            if ("highscore".equals(cookie.getName())) {
+                highscore = Integer.parseInt(cookie.getValue());
+            }
+        }
+        return highscore;
+    }
+
+    public int compareHighscoreWithScore(int score, int highscore){
+        if (highscore < score) highscore = score;
+        return highscore;
     }
 }

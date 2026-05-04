@@ -13,6 +13,7 @@
 
 <div class="landing-container">
     <h1>Politician-Party</h1>
+    <div id="highscore" th:text="'Highscore ' + ${highscore}"></div>
     <div id="score" th:text="'Punktzahl: ' + ${score}"></div>
     <div th:if="${gameOverParty}" class="gameOverDisplay">
         <p th:text="'Leider Falsch! ' + ${gameOverPoliticianName} + ' ' + ${gameOverPoliticianSurname} + ' ist in der Partei ' + ${gameOverParty} + '.'"></p>

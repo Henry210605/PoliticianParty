@@ -12,6 +12,7 @@
 </div>
 
 <div class="landing-container">
+    <div id="highscore" th:text="'Highscore ' + ${highscore}"></div>
     <div id="score" th:text="'Punktzahl: ' + ${score}"></div>
     <div><img id="politician-image" th:src="@{'/images/' + ${politician.imagePath}}" alt="Politikerbild" /></div>
     <div class="politician-name">
